@@ -1,0 +1,14 @@
+.form-component-layout{
+    display: grid;
+    grid-template-columns: 1fr;
+    @media only screen and (min-width: 361px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 709px;
+    }
+    @media only screen and (min-width: 961px) {
+        display: grid;
+        grid-template-columns: 536px 1fr;
+        grid-template-rows: 709px;
+    }
+}

@@ -1,0 +1,38 @@
+.form-section {
+  display: grid;
+  justify-items: center;
+  @media only screen and (min-width: 361px) {
+    align-items: center;
+  }
+}
+
+.form-container {
+  gap: 16px !important;
+  padding: 20px 0px 54px;
+  margin: 0px 32px;
+  max-width: 288px;
+  > div:first-child {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    padding-bottom: 4px;
+    color: #494f66;
+  }
+  @media only screen and (min-width: 361px) {
+    padding: 0px;
+    margin: 0px;
+    > div:last-child {
+        margin-right: 90px;
+      }
+  }
+}
+
+.checkbox-green {
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #389e0d;
+    border-color: #389e0d;
+  }
+}
+

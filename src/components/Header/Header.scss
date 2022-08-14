@@ -1,0 +1,32 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  @media only screen and (min-width: 361px) {
+    height: 64px;
+  }
+}
+
+.header-container .call-us-mobile {
+  display: flex;
+  align-items: center;
+  font-family: 'Lato';
+  font-size: 14px;
+  color:  #6769FF;
+  gap: 6px;
+}
+
+.header-container .call-us-desktop {
+  display: flex;
+  align-items: center;
+  font-family: 'Lato';
+  font-size: 14px;
+  color:  #6769FF;
+  gap: 6px;
+  >div:nth-child(1){
+    font-size: 12px;
+    color: #676F8F;
+    padding-right: 16px;
+  }
+}

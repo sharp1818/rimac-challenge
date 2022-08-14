@@ -1,0 +1,98 @@
+.tracking-section{
+    display: grid;
+    grid-template-columns: 1fr 112px;
+    grid-template-rows: 210px;
+    margin-bottom: 40px;
+    padding-left: 32px;
+    padding-top: 88px;
+    height: 100%;
+    background: #F7F8FC;
+    .icon-girl-desktop, .copyright-text-desktop{
+        display: none;
+    }
+    @media only screen and (min-width: 361px) {
+        display: grid;
+        padding-left: 30px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 20px;
+        margin-bottom: 0px;
+        padding-bottom: 40px;
+        background-image: url('../../images/Form/BACKGROUND.svg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        .icon-girl-mobile{
+            display: none;
+        }
+        .icon-girl-desktop, .copyright-text-desktop{
+            display: block;
+        }
+        .icon-girl-desktop, .info-container{
+            padding-left: 44px !important;
+        }
+    }
+    @media only screen and (min-width: 961px) {
+        padding-left: 110px;
+    }
+}
+
+.tracking-section > .info-container {
+    padding: 20px 0px;
+    >div:nth-child(1){
+        font-family: 'Lato';
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 16px;
+        color: #494F66;
+    }
+    >div:nth-child(2){
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 36px;
+        color: #494F66;
+    }
+    >div:nth-child(3){
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 36px;
+        color: #FF1C44;
+    }
+    >div:nth-child(4){
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        padding-top: 6px;
+        color: #676F8F;
+    }
+    @media only screen and (min-width: 361px) {
+        >div:nth-child(1){
+            font-size: 12px;
+            padding-bottom: 2px;
+        }
+        >div:nth-child(2){
+            font-size: 36px;
+            line-height: 44px;
+            >span {
+                color: #FF1C44;
+            }
+        }
+        >div:nth-child(3){
+            font-size: 36px;
+            line-height: 44px;
+        }
+        >div:nth-child(4){
+            font-size: 14px;
+            width: 288px;
+            padding-top: 10px;
+        }
+    }
+}
+
+.copyright-text-desktop{
+    @media only screen and (min-width: 361px) {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
