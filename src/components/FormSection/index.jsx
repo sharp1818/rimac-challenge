@@ -5,11 +5,16 @@ import {
   Form, Input, Select, Checkbox, Space,
 } from 'antd';
 import 'antd/dist/antd.min.css';
-import * as Yup from 'yup';
 import RedButton from '../RedButton';
 import FormContext from '../../context/Form/FormContext';
 
 function FormSection() {
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm();
+
   const {
     next, nextStep,
   } = useContext(FormContext);
@@ -17,29 +22,6 @@ function FormSection() {
   const nextPage = () => {
     next();
     nextStep();
-  };
-
-  const schema = Yup.object().shape({
-    doc: Yup.string()
-      .required('Ingresa tu dni')
-      .min(8, 'Máximo 8 números')
-      .max(8, 'Máximo 8 números'),
-    phone: Yup.string()
-      .required('Ingresa tu celular')
-      .min(9, 'Maximo 9 numeros')
-      .max(9, 'Máximo 9 números'),
-    numberPlate: Yup.string()
-      .required('Ingresa número de placa.')
-      .min(6, 'Maximo 6 caracteres')
-      .max(6, 'Máximo 6 caracteres'),
-    terms: Yup.bool()
-      .required('Por favor, aceptar terminos y condiciones'),
-  });
-
-  const yupSync = {
-    async validator({ field }, value) {
-      await schema.validateSyncAt(field, { [field]: value });
-    },
   };
 
   const [form] = Form.useForm();
@@ -52,7 +34,7 @@ function FormSection() {
   );
   return (
     <div className="form-section">
-      <Form form={form}>
+      <form form={form}>
         <Space direction="vertical" className="form-container">
           <div>Déjanos tus datos</div>
           <Form.Item name="doc" rules={[yupSync]}>
@@ -77,7 +59,7 @@ function FormSection() {
           </Form.Item>
           <RedButton message="COTÍZALO" method={nextPage} className="submit-button" />
         </Space>
-      </Form>
+      </form>
     </div>
   );
 }
