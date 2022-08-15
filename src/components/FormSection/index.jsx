@@ -1,100 +1,60 @@
-import { useContext } from 'react';
-import axios from 'axios';
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable operator-linebreak */
+/* eslint-disable object-curly-newline */
+/* eslint-disable comma-dangle */
 import './FormSection.scss';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { Input, Checkbox, Space } from 'antd';
 import 'antd/dist/antd.min.css';
 import Select from 'react-select';
-import { useNavigate } from 'react-router-dom';
-import FormContext from '../../context/Form/FormContext';
 
-function FormSection() {
-  const { personalData, setPersonalData } = useContext(FormContext);
-
+function FormSection({ docs, docType, phone, numPlate, submitForm }) {
   const {
-    docs, docType, doc, phone, numPlate, terms,
-  } = personalData;
-
-  const {
-    handleSubmit,
-    formState: { errors },
     control,
-  } = useForm();
+    watch,
+    handleSubmit,
+    formState: { errors }
+  } = useFormContext();
 
-  const carInfo = JSON.stringify({
-    doc,
-    phone,
-    numPlate,
-  });
-
-  const navigate = useNavigate();
-  const CreateForm = async () => {
-    const res = await axios.post('https://jsonplaceholder.typicode.com/posts', carInfo, {
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    if (res.status === 201) {
-      // next();
-      // nextStep();
-      navigate('/arma-tu-plan/step_2');
-    }
-  };
-  const SendForm = () => {
-    try {
-      CreateForm();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  console.log('asdasd', watch(phone));
   return (
     <div className="form-section">
-      <form onSubmit={handleSubmit(SendForm)}>
+      <form onSubmit={handleSubmit(submitForm)}>
         <Space direction="vertical" className="form-container">
           <div>Déjanos tus datos</div>
           <div>
             <Input.Group compact className="input-group">
-              <Select
-                defaultValue={docType}
-                className="select-input"
-                options={docs}
-                onChange={(e) => {
-                  setPersonalData({
-                    ...personalData,
-                    docType: e,
-                  });
-                }}
-              />
               <Controller
                 control={control}
-                name="inputDni"
-                defaultValue={doc}
+                name="doc"
                 rules={{
                   required: true,
                   minLength: 8,
                   maxLength: 8,
-                  pattern: /^[0-9]/i,
+                  pattern: /^[0-9]/i
                 }}
-                render={({ field: { onChange } }) => (
-                  <input
-                    type="text"
-                    defaultValue={doc}
-                    className="input-data"
-                    placeholder="Nro. de doc"
-                    onChange={(e) => {
-                      onChange(e);
-                      setPersonalData({
-                        ...personalData,
-                        doc: e.target.value,
-                      });
-                    }}
-                  />
+                render={({ field }) => (
+                  <Select className="select-input" options={docs} {...field} />
+                )}
+              />
+              <Controller
+                control={control}
+                name="doc"
+                rules={{
+                  required: true,
+                  minLength: 8,
+                  maxLength: 8,
+                  pattern: /^[0-9]/i
+                }}
+                render={({ field }) => (
+                  <input type="text" className="input-data" placeholder="Nro. de doc" {...field} />
                 )}
               />
             </Input.Group>
             <div className="error-message-box">
-              {errors.inputDni && (
+              {errors && errors.inputDni && (
                 <span className="error-message">
                   {errors.inputDni?.type === 'required' && `Por favor, ingresa tu ${docType.label}`}
                   {errors.inputDni?.type === 'minLength' && 'Se admite 8 números'}
@@ -107,13 +67,13 @@ function FormSection() {
           <div>
             <Controller
               control={control}
-              name="inputPhone"
+              name="phone"
               defaultValue={phone}
               rules={{
                 required: true,
                 minLength: 9,
                 maxLength: 9,
-                pattern: /^[0-9]/i,
+                pattern: /^[0-9]/i
               }}
               render={({ field: { onChange } }) => (
                 <input
@@ -123,10 +83,6 @@ function FormSection() {
                   placeholder="Celular"
                   onChange={(e) => {
                     onChange(e);
-                    setPersonalData({
-                      ...personalData,
-                      phone: e.target.value,
-                    });
                   }}
                 />
               )}
@@ -145,27 +101,21 @@ function FormSection() {
           <div>
             <Controller
               control={control}
-              name="inputNumPlate"
+              name="numPlate"
               defaultValue={numPlate}
               rules={{
                 required: true,
                 minLength: 6,
                 maxLength: 6,
-                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i,
+                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
               }}
-              render={({ field: { onChange } }) => (
+              render={({ field }) => (
                 <input
                   type="text"
                   defaultValue={numPlate}
                   className="input-data"
                   placeholder="Placa"
-                  onChange={(e) => {
-                    onChange(e);
-                    setPersonalData({
-                      ...personalData,
-                      numPlate: e.target.value,
-                    });
-                  }}
+                  {...field}
                 />
               )}
             />
@@ -174,8 +124,8 @@ function FormSection() {
                 <span className="error-message">
                   {errors.inputNumPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
                   {errors.inputNumPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
-                  {errors.inputNumPlate?.type === 'maxLength'
-                    && 'Se admite 6 caracteres como maximo'}
+                  {errors.inputNumPlate?.type === 'maxLength' &&
+                    'Se admite 6 caracteres como maximo'}
                   {errors.inputNumPlate?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
@@ -183,25 +133,34 @@ function FormSection() {
           </div>
           <div className="checkbox-box">
             <div>
+              {/* <Controller
+                control={control}
+                name="terms"
+                rules={{
+                  required: 'Por favor, acepta los terminos y condiciones'
+                }}
+                render={({ restPropsFields }) => (
+                  <Checkbox {...restPropsFields}>
+                    Acepto la
+                    <a href="https://www.google.com/" target="_blank" rel="noreferrer">
+                      Política de Protección de Datos Personales
+                    </a>
+                    y los
+                    <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">
+                      Términos y Condiciones
+                    </a>
+                  </Checkbox>
+                )}
+              /> */}
               <Controller
                 control={control}
-                defaultValue={terms}
-                name="inputTerms"
-                rules={{
-                  required: 'Por favor, acepta los terminos y condiciones',
-                }}
-                render={({ field: { onChange } }) => (
+                name="terms"
+                render={({ field: { value, onChange } }) => (
                   <Checkbox
-                    checked={terms}
-                    className="checkbox-green"
+                    checked={value}
                     onChange={(e) => {
-                      onChange(e);
-                      setPersonalData({
-                        ...personalData,
-                        terms: e.target.checked,
-                      });
-                    }}
-                  >
+                      onChange(e.target.checked);
+                    }}>
                     Acepto la
                     <a href="https://www.google.com/" target="_blank" rel="noreferrer">
                       Política de Protección de Datos Personales

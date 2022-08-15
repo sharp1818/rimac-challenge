@@ -1,95 +1,98 @@
-.tracking-section{
+.tracking-section {
+  display: grid;
+  grid-template-columns: 1fr 112px;
+  padding-left: 32px;
+  padding-top: 88px;
+  background: linear-gradient(to bottom, #f7f8fc, #f7f8fc 90%, #ffffff00 10%);
+  .icon-girl-desktop,
+  .copyright-text-desktop {
+    display: none;
+  }
+  @media only screen and (min-width: 361px) {
     display: grid;
-    grid-template-columns: 1fr 112px;
-    padding-left: 32px;
-    padding-top: 88px;
-    background: linear-gradient(to bottom, #F7F8FC, #F7F8FC 90%, #ffffff00 10%);
-    .icon-girl-desktop, .copyright-text-desktop{
-        display: none;
+    width: 100%;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px 260px 20px;
+    margin-bottom: 0px;
+    padding-bottom: 40px;
+    background-image: url('../../images/Form/BACKGROUND.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    .icon-girl-mobile {
+      display: none;
     }
-    @media only screen and (min-width: 361px) {
-        display: grid;
-        width: 100%;
-        justify-items: center;
-        grid-template-columns: 1fr;
-        grid-template-rows: 280px 260px 20px;
-        margin-bottom: 0px;
-        padding-bottom: 40px;
-        background-image: url('../../images/Form/BACKGROUND.svg');
-        background-repeat: no-repeat;
-        background-size:cover;
-        .icon-girl-mobile{
-            display: none;
-        }
-        .icon-girl-desktop, .copyright-text-desktop{
-            display: block;
-        }
-        .icon-girl-desktop, .info-container{
-            padding-left: 44px !important;
-        }
+    .icon-girl-desktop,
+    .copyright-text-desktop {
+      display: block;
     }
-    @media only screen and (min-width: 961px) {
-        padding-left: 40px;
+    .icon-girl-desktop,
+    .info-container {
+      padding-left: 44px !important;
     }
+  }
+  @media only screen and (min-width: 961px) {
+    padding-left: 40px;
+  }
 }
 
 .tracking-section > .info-container {
-    padding: 20px 0px;
-    >div:nth-child(1){
-        font-family: 'Lato';
-        font-weight: 700;
-        font-size: 10px;
-        line-height: 16px;
-        color: #494F66;
+  padding: 20px 0px;
+  > div:nth-child(1) {
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    color: #494f66;
+  }
+  > div:nth-child(2) {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #494f66;
+  }
+  > div:nth-child(3) {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #ff1c44;
+  }
+  > div:nth-child(4) {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    padding-top: 6px;
+    color: #676f8f;
+  }
+  @media only screen and (min-width: 361px) {
+    > div:nth-child(1) {
+      font-size: 12px;
+      padding-bottom: 2px;
     }
-    >div:nth-child(2){
-        font-family: 'Lato';
-        font-weight: 400;
-        font-size: 28px;
-        line-height: 36px;
-        color: #494F66;
+    > div:nth-child(2) {
+      font-size: 36px;
+      line-height: 44px;
+      > span {
+        color: #ff1c44;
+      }
     }
-    >div:nth-child(3){
-        font-family: 'Lato';
-        font-weight: 400;
-        font-size: 28px;
-        line-height: 36px;
-        color: #FF1C44;
+    > div:nth-child(3) {
+      font-size: 36px;
+      line-height: 44px;
     }
-    >div:nth-child(4){
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-        padding-top: 6px;
-        color: #676F8F;
+    > div:nth-child(4) {
+      font-size: 14px;
+      width: 288px;
+      padding-top: 10px;
     }
-    @media only screen and (min-width: 361px) {
-        >div:nth-child(1){
-            font-size: 12px;
-            padding-bottom: 2px;
-        }
-        >div:nth-child(2){
-            font-size: 36px;
-            line-height: 44px;
-            >span {
-                color: #FF1C44;
-            }
-        }
-        >div:nth-child(3){
-            font-size: 36px;
-            line-height: 44px;
-        }
-        >div:nth-child(4){
-            font-size: 14px;
-            width: 288px;
-            padding-top: 10px;
-        }
-    }
+  }
 }
 
-.copyright-text-desktop{
-    @media only screen and (min-width: 361px) {
-        padding-right: 120px;
-    }
+.copyright-text-desktop {
+  @media only screen and (min-width: 361px) {
+    padding-right: 120px;
+  }
 }
