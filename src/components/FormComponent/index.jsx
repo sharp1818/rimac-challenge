@@ -5,7 +5,9 @@ import './FormComponent.scss';
 function FormComponent() {
   return (
     <div className="form-component-layout">
-      <TrackingSection />
+      <div className="background-tracking-section">
+        <TrackingSection />
+      </div>
       <FormSection />
     </div>
   );

@@ -1,19 +1,18 @@
 .tracking-section{
     display: grid;
     grid-template-columns: 1fr 112px;
-    grid-template-rows: 210px;
-    margin-bottom: 40px;
     padding-left: 32px;
     padding-top: 88px;
-    background: #F7F8FC;
+    background: linear-gradient(to bottom, #F7F8FC, #F7F8FC 90%, #ffffff00 10%);
     .icon-girl-desktop, .copyright-text-desktop{
         display: none;
     }
     @media only screen and (min-width: 361px) {
         display: grid;
-        padding-left: 30px;
+        width: 100%;
+        justify-items: center;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 20px;
+        grid-template-rows: 280px 260px 20px;
         margin-bottom: 0px;
         padding-bottom: 40px;
         background-image: url('../../images/Form/BACKGROUND.svg');
@@ -30,7 +29,7 @@
         }
     }
     @media only screen and (min-width: 961px) {
-        padding-left: 110px;
+        padding-left: 40px;
     }
 }
 
@@ -91,7 +90,6 @@
 
 .copyright-text-desktop{
     @media only screen and (min-width: 361px) {
-        width: 100%;
-        margin: 0 auto;
+        padding-right: 120px;
     }
 }

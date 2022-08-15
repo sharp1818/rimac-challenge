@@ -3,6 +3,7 @@
   justify-items: center;
   @media only screen and (min-width: 361px) {
     align-items: center;
+    padding: 0px 32px;
   }
 }
 
@@ -63,10 +64,27 @@
   width: 100%;
   outline: none;
   border: 1px solid #DADADA;
+  text-transform: uppercase;
   border-radius: 4px;
   height: 46px;
   padding-left: 10px;
 }
+::-webkit-input-placeholder {
+  text-transform: initial;
+}
+
+:-moz-placeholder { 
+  text-transform: initial;
+}
+
+::-moz-placeholder {  
+  text-transform: initial;
+}
+
+:-ms-input-placeholder { 
+  text-transform: initial;
+}
+
 input:nth-child(2){
   border-radius: 0px 4px 4px 0px !important;
   outline: none;
