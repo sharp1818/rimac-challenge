@@ -1,54 +1,46 @@
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable operator-linebreak */
+/* eslint-disable comma-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useContext } from 'react';
 import axios from 'axios';
 import './FormSection.scss';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  Input, Checkbox, Space,
-} from 'antd';
+import { Input, Checkbox, Space } from 'antd';
 import 'antd/dist/antd.min.css';
 import Select from 'react-select';
+import { useNavigate } from 'react-router-dom';
 import FormContext from '../../context/Form/FormContext';
 
 function FormSection() {
-  const {
-    personalData, setPersonalData,
-  } = useContext(FormContext);
+  const { personalData, setPersonalData } = useContext(FormContext);
 
-  const {
-    docs,
-    docType,
-    doc,
-    phone,
-    numPlate,
-    terms,
-  } = personalData;
+  // eslint-disable-next-line object-curly-newline
+  const { docs, docType, doc, phone, numPlate, terms } = personalData;
 
   const {
     handleSubmit,
     formState: { errors },
-    control,
+    control
   } = useForm();
-
-  const {
-    next, nextStep,
-  } = useContext(FormContext);
 
   const carInfo = JSON.stringify({
     doc,
     phone,
-    numPlate,
+    numPlate
   });
 
+  const navigate = useNavigate();
   const CreateForm = async () => {
     const res = await axios.post('https://jsonplaceholder.typicode.com/posts', carInfo, {
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
+        'Content-type': 'application/json; charset=UTF-8'
+      }
     });
     if (res.status === 201) {
-      next();
-      nextStep();
+      // next();
+      // nextStep();
+      navigate('/arma-tu-plan/step_2');
     }
   };
   const SendForm = () => {
@@ -73,7 +65,7 @@ function FormSection() {
                 onChange={(e) => {
                   setPersonalData({
                     ...personalData,
-                    docType: e,
+                    docType: e
                   });
                 }}
               />
@@ -85,7 +77,7 @@ function FormSection() {
                   required: true,
                   minLength: 8,
                   maxLength: 8,
-                  pattern: /^[0-9]/i,
+                  pattern: /^[0-9]/i
                 }}
                 render={({ field: { onChange } }) => (
                   <input
@@ -97,7 +89,7 @@ function FormSection() {
                       onChange(e);
                       setPersonalData({
                         ...personalData,
-                        doc: e.target.value,
+                        doc: e.target.value
                       });
                     }}
                   />
@@ -107,14 +99,10 @@ function FormSection() {
             <div className="error-message-box">
               {errors.inputDni && (
                 <span className="error-message">
-                  {errors.inputDni?.type === 'required'
-                      && `Por favor, ingresa tu ${docType.label}`}
-                  {errors.inputDni?.type === 'minLength'
-                      && 'Se admite 8 números'}
-                  {errors.inputDni?.type === 'maxLength'
-                      && 'Se admite 8 números como máximo'}
-                  {errors.inputDni?.type === 'pattern'
-                      && 'Caracteres no permitidos'}
+                  {errors.inputDni?.type === 'required' && `Por favor, ingresa tu ${docType.label}`}
+                  {errors.inputDni?.type === 'minLength' && 'Se admite 8 números'}
+                  {errors.inputDni?.type === 'maxLength' && 'Se admite 8 números como máximo'}
+                  {errors.inputDni?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
@@ -128,7 +116,7 @@ function FormSection() {
                 required: true,
                 minLength: 9,
                 maxLength: 9,
-                pattern: /^[0-9]/i,
+                pattern: /^[0-9]/i
               }}
               render={({ field: { onChange } }) => (
                 <input
@@ -140,7 +128,7 @@ function FormSection() {
                     onChange(e);
                     setPersonalData({
                       ...personalData,
-                      phone: e.target.value,
+                      phone: e.target.value
                     });
                   }}
                 />
@@ -149,14 +137,10 @@ function FormSection() {
             <div className="error-message-box">
               {errors.inputPhone && (
                 <span className="error-message">
-                  {errors.inputPhone?.type === 'required'
-                    && 'Por favor, ingresa tu celular'}
-                  {errors.inputPhone?.type === 'minLength'
-                  && 'Se admite 9 números'}
-                  {errors.inputPhone?.type === 'maxLength'
-                    && 'Se admite 9 números como máximo'}
-                  {errors.inputPhone?.type === 'pattern'
-                    && 'Caracteres no permitidos'}
+                  {errors.inputPhone?.type === 'required' && 'Por favor, ingresa tu celular'}
+                  {errors.inputPhone?.type === 'minLength' && 'Se admite 9 números'}
+                  {errors.inputPhone?.type === 'maxLength' && 'Se admite 9 números como máximo'}
+                  {errors.inputPhone?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
@@ -170,7 +154,7 @@ function FormSection() {
                 required: true,
                 minLength: 6,
                 maxLength: 6,
-                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i,
+                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
               }}
               render={({ field: { onChange } }) => (
                 <input
@@ -182,7 +166,7 @@ function FormSection() {
                     onChange(e);
                     setPersonalData({
                       ...personalData,
-                      numPlate: e.target.value,
+                      numPlate: e.target.value
                     });
                   }}
                 />
@@ -191,14 +175,11 @@ function FormSection() {
             <div className="error-message-box">
               {errors.inputNumPlate && (
                 <span className="error-message">
-                  {errors.inputNumPlate?.type === 'required'
-                    && 'Por favor, ingresa tu placa'}
-                  {errors.inputNumPlate?.type === 'minLength'
-                  && 'Se admite 6 caracteres'}
-                  {errors.inputNumPlate?.type === 'maxLength'
-                    && 'Se admite 6 caracteres como maximo'}
-                  {errors.inputNumPlate?.type === 'pattern'
-                    && 'Caracteres no permitidos'}
+                  {errors.inputNumPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
+                  {errors.inputNumPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
+                  {errors.inputNumPlate?.type === 'maxLength' &&
+                    'Se admite 6 caracteres como maximo'}
+                  {errors.inputNumPlate?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
@@ -210,7 +191,7 @@ function FormSection() {
                 defaultValue={terms}
                 name="inputTerms"
                 rules={{
-                  required: 'Por favor, acepta los terminos y condiciones',
+                  required: 'Por favor, acepta los terminos y condiciones'
                 }}
                 render={({ field: { onChange } }) => (
                   <Checkbox
@@ -220,28 +201,30 @@ function FormSection() {
                       onChange(e);
                       setPersonalData({
                         ...personalData,
-                        terms: e.target.checked,
+                        terms: e.target.checked
                       });
-                    }}
-                  >
+                    }}>
                     Acepto la
-                    {' '}
-                    <a href="https://www.google.com/" target="_blank" rel="noreferrer">Política de Protección de Datos Personales</a>
-                    {' '}
+                    <a href="https://www.google.com/" target="_blank" rel="noreferrer">
+                      Política de Protección de Datos Personales
+                    </a>
                     y los
-                    {' '}
-                    <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">Términos y Condiciones</a>
+                    <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">
+                      Términos y Condiciones
+                    </a>
                   </Checkbox>
                 )}
               />
               <div className="error-message-box">
                 {errors.inputTerms && (
-                <span className="error-message">{errors.inputTerms.message}</span>
+                  <span className="error-message">{errors.inputTerms.message}</span>
                 )}
               </div>
             </div>
           </div>
-          <button type="submit" className="red-button">COTÍZALO</button>
+          <button type="submit" className="red-button">
+            COTÍZALO
+          </button>
         </Space>
       </form>
     </div>
