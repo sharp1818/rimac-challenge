@@ -10,7 +10,7 @@ import { Input, Checkbox, Space } from 'antd';
 import 'antd/dist/antd.min.css';
 import Select from 'react-select';
 
-function FormSection({ docs, docType, phone, numPlate, submitForm }) {
+function FormSection({ docs, submitForm }) {
   const {
     control,
     watch,
@@ -18,7 +18,7 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
     formState: { errors }
   } = useFormContext();
 
-  console.log('asdasd', watch(phone));
+  console.log('asdasd', watch('phone'));
   return (
     <div className="form-section">
       <form onSubmit={handleSubmit(submitForm)}>
@@ -28,7 +28,7 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
             <Input.Group compact className="input-group">
               <Controller
                 control={control}
-                name="doc"
+                name="docType"
                 rules={{
                   required: true,
                   minLength: 8,
@@ -56,7 +56,8 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
             <div className="error-message-box">
               {errors && errors.inputDni && (
                 <span className="error-message">
-                  {errors.inputDni?.type === 'required' && `Por favor, ingresa tu ${docType.label}`}
+                  {errors.inputDni?.type === 'required' &&
+                    `Por favor, ingresa tu ${watch('docType')}`}
                   {errors.inputDni?.type === 'minLength' && 'Se admite 8 números'}
                   {errors.inputDni?.type === 'maxLength' && 'Se admite 8 números como máximo'}
                   {errors.inputDni?.type === 'pattern' && 'Caracteres no permitidos'}
@@ -68,7 +69,6 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
             <Controller
               control={control}
               name="phone"
-              defaultValue={phone}
               rules={{
                 required: true,
                 minLength: 9,
@@ -78,7 +78,6 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
               render={({ field: { onChange } }) => (
                 <input
                   type="text"
-                  defaultValue={phone}
                   className="input-data"
                   placeholder="Celular"
                   onChange={(e) => {
@@ -102,7 +101,6 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
             <Controller
               control={control}
               name="numPlate"
-              defaultValue={numPlate}
               rules={{
                 required: true,
                 minLength: 6,
@@ -110,13 +108,7 @@ function FormSection({ docs, docType, phone, numPlate, submitForm }) {
                 pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
               }}
               render={({ field }) => (
-                <input
-                  type="text"
-                  defaultValue={numPlate}
-                  className="input-data"
-                  placeholder="Placa"
-                  {...field}
-                />
+                <input type="text" className="input-data" placeholder="Placa" {...field} />
               )}
             />
             <div className="error-message-box">
