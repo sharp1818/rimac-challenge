@@ -1,31 +1,18 @@
-import { useContext } from 'react';
-import FormContext from '../../context/Form/FormContext';
+import AmountSection from '../AmountSection';
+import InsuranceSection from '../InsuranceSection';
+import TabSection from '../TabSection';
 
 function CreatePlanComponent() {
-  const {
-    prev, next, prevStep, nextStep,
-  } = useContext(FormContext);
-
-  const nextPage = () => {
-    next();
-    nextStep();
-  };
-
-  const backPage = () => {
-    prev();
-    prevStep();
-  };
-
   return (
-    <>
-      <div>CreatePlanComponent</div>
-      <button type="button" onClick={() => { backPage(); }}>
-        back
-      </button>
-      <button type="button" onClick={() => { nextPage(); }}>
-        next
-      </button>
-    </>
+    <div className="create-plan-component-layout">
+      <div>
+        <InsuranceSection />
+        <TabSection />
+      </div>
+      <div>
+        <AmountSection />
+      </div>
+    </div>
   );
 }
 

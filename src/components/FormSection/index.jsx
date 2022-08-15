@@ -8,7 +8,6 @@ import {
 } from 'antd';
 import 'antd/dist/antd.min.css';
 import Select from 'react-select';
-import RedButton from '../RedButton';
 import FormContext from '../../context/Form/FormContext';
 
 function FormSection() {
@@ -69,6 +68,7 @@ function FormSection() {
             <Input.Group compact className="input-group">
               <Select
                 defaultValue={docType}
+                className="select-input"
                 options={docs}
                 onChange={(e) => {
                   setPersonalData({
@@ -91,6 +91,7 @@ function FormSection() {
                   <input
                     type="text"
                     defaultValue={doc}
+                    className="input-data"
                     placeholder="Nro. de doc"
                     onChange={(e) => {
                       onChange(e);
@@ -133,6 +134,7 @@ function FormSection() {
                 <input
                   type="text"
                   defaultValue={phone}
+                  className="input-data"
                   placeholder="Celular"
                   onChange={(e) => {
                     onChange(e);
@@ -174,6 +176,7 @@ function FormSection() {
                 <input
                   type="text"
                   defaultValue={numPlate}
+                  className="input-data"
                   placeholder="Placa"
                   onChange={(e) => {
                     onChange(e);
@@ -231,12 +234,14 @@ function FormSection() {
                   </Checkbox>
                 )}
               />
-              {errors.inputTerms && (
+              <div className="error-message-box">
+                {errors.inputTerms && (
                 <span className="error-message">{errors.inputTerms.message}</span>
-              )}
+                )}
+              </div>
             </div>
           </div>
-          <RedButton message="COTÍZALO" />
+          <button type="submit" className="red-button">COTÍZALO</button>
         </Space>
       </form>
     </div>
