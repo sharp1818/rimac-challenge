@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable operator-linebreak */
-/* eslint-disable comma-dangle */
-/* eslint-disable react/jsx-props-no-spreading */
 import { useContext } from 'react';
 import axios from 'axios';
 import './FormSection.scss';
@@ -15,27 +11,28 @@ import FormContext from '../../context/Form/FormContext';
 function FormSection() {
   const { personalData, setPersonalData } = useContext(FormContext);
 
-  // eslint-disable-next-line object-curly-newline
-  const { docs, docType, doc, phone, numPlate, terms } = personalData;
+  const {
+    docs, docType, doc, phone, numPlate, terms,
+  } = personalData;
 
   const {
     handleSubmit,
     formState: { errors },
-    control
+    control,
   } = useForm();
 
   const carInfo = JSON.stringify({
     doc,
     phone,
-    numPlate
+    numPlate,
   });
 
   const navigate = useNavigate();
   const CreateForm = async () => {
     const res = await axios.post('https://jsonplaceholder.typicode.com/posts', carInfo, {
       headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     });
     if (res.status === 201) {
       // next();
@@ -65,7 +62,7 @@ function FormSection() {
                 onChange={(e) => {
                   setPersonalData({
                     ...personalData,
-                    docType: e
+                    docType: e,
                   });
                 }}
               />
@@ -77,7 +74,7 @@ function FormSection() {
                   required: true,
                   minLength: 8,
                   maxLength: 8,
-                  pattern: /^[0-9]/i
+                  pattern: /^[0-9]/i,
                 }}
                 render={({ field: { onChange } }) => (
                   <input
@@ -89,7 +86,7 @@ function FormSection() {
                       onChange(e);
                       setPersonalData({
                         ...personalData,
-                        doc: e.target.value
+                        doc: e.target.value,
                       });
                     }}
                   />
@@ -116,7 +113,7 @@ function FormSection() {
                 required: true,
                 minLength: 9,
                 maxLength: 9,
-                pattern: /^[0-9]/i
+                pattern: /^[0-9]/i,
               }}
               render={({ field: { onChange } }) => (
                 <input
@@ -128,7 +125,7 @@ function FormSection() {
                     onChange(e);
                     setPersonalData({
                       ...personalData,
-                      phone: e.target.value
+                      phone: e.target.value,
                     });
                   }}
                 />
@@ -154,7 +151,7 @@ function FormSection() {
                 required: true,
                 minLength: 6,
                 maxLength: 6,
-                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
+                pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i,
               }}
               render={({ field: { onChange } }) => (
                 <input
@@ -166,7 +163,7 @@ function FormSection() {
                     onChange(e);
                     setPersonalData({
                       ...personalData,
-                      numPlate: e.target.value
+                      numPlate: e.target.value,
                     });
                   }}
                 />
@@ -177,8 +174,8 @@ function FormSection() {
                 <span className="error-message">
                   {errors.inputNumPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
                   {errors.inputNumPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
-                  {errors.inputNumPlate?.type === 'maxLength' &&
-                    'Se admite 6 caracteres como maximo'}
+                  {errors.inputNumPlate?.type === 'maxLength'
+                    && 'Se admite 6 caracteres como maximo'}
                   {errors.inputNumPlate?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
@@ -191,7 +188,7 @@ function FormSection() {
                 defaultValue={terms}
                 name="inputTerms"
                 rules={{
-                  required: 'Por favor, acepta los terminos y condiciones'
+                  required: 'Por favor, acepta los terminos y condiciones',
                 }}
                 render={({ field: { onChange } }) => (
                   <Checkbox
@@ -201,9 +198,10 @@ function FormSection() {
                       onChange(e);
                       setPersonalData({
                         ...personalData,
-                        terms: e.target.checked
+                        terms: e.target.checked,
                       });
-                    }}>
+                    }}
+                  >
                     Acepto la
                     <a href="https://www.google.com/" target="_blank" rel="noreferrer">
                       Política de Protección de Datos Personales
