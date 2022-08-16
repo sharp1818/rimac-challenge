@@ -14,8 +14,8 @@ function ArmaTuPlan() {
       ]
     }
   });
-  const { watch } = methods;
-  console.log('watch', watch());
+  // const { watch } = methods;
+  // console.log('watch', watch());
   return (
     <FormProvider {...methods}>
       <Outlet />

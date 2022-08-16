@@ -9,13 +9,9 @@ function TabSection() {
   const { TabPane } = Tabs;
   // const { watch, setValue } = useFormContext();
 
-  const onChange = (key) => {
-    console.log(key);
-  };
-
   return (
     <div>
-      <Tabs className="tab-section" defaultActiveKey="1" onChange={onChange}>
+      <Tabs className="tab-section" defaultActiveKey="1">
         <TabPane
           tab={
             <div className="custom-label-tab">
