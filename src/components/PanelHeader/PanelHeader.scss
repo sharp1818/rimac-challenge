@@ -1,0 +1,46 @@
+.panel-header{
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    .add-menu{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        >div:nth-child(1){
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 28px;
+            color: #494F66;
+        }
+        >.icon-mobile{
+            outline: none;
+            border: none;
+            background-color: transparent;
+            color: #939DFF;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            @media only screen and (min-width: 361px) {
+                display: none;
+            }
+            .icon{
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                border: 1px solid #939DFF;
+            }
+        }
+        >.switch-desktop{
+            display: none;
+            @media only screen and (min-width: 361px) {
+                display: block;
+            }
+            .ant-switch-checked {
+                background-color: #7CC954;
+             }
+        }
+    }
+}

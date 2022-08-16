@@ -1,0 +1,25 @@
+.tab-section {   
+    .ant-tabs-tab {
+        font-size: 10px !important;
+    }
+    .ant-tabs-tab:hover {
+        color: #FF1C44;
+    }
+    .ant-tabs-ink-bar {
+        border-bottom: 4px solid #FF1C44;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+       color: #FF1C44 !important; 
+    }
+    
+    .ant-tabs-nav-wrap{
+       justify-content: center;
+    }
+    .custom-label-tab{
+        display: flex;
+        text-align: center;
+        text-transform: uppercase;
+        flex-direction: column;
+    }
+
+}

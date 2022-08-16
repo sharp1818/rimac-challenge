@@ -8,9 +8,9 @@ import './FormSection.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Input, Checkbox, Space } from 'antd';
 import 'antd/dist/antd.min.css';
-import Select from 'react-select';
+import ReactSelect from 'react-select';
 
-function FormSection({ docs, submitForm }) {
+function FormSection({ submitForm }) {
   const {
     control,
     watch,
@@ -18,7 +18,7 @@ function FormSection({ docs, submitForm }) {
     formState: { errors }
   } = useFormContext();
 
-  console.log('asdasd', watch('phone'));
+  console.log('asdasd', watch());
   return (
     <div className="form-section">
       <form onSubmit={handleSubmit(submitForm)}>
@@ -27,18 +27,22 @@ function FormSection({ docs, submitForm }) {
           <div>
             <Input.Group compact className="input-group">
               <Controller
-                control={control}
                 name="docType"
+                control={control}
                 rules={{
                   required: true,
-                  minLength: 8,
-                  maxLength: 8,
-                  pattern: /^[0-9]/i
                 }}
+                defaultValue={{ value: 'dni', label: 'DNI' }}
                 render={({ field }) => (
-                  <Select className="select-input" options={docs} {...field} />
-                )}
+                  <ReactSelect
+                    className="select-input"
+                    {...field}
+                    options={[
+                      { value: 'dni', label: 'DNI' },
+                    ]}
               />
+                )}
+          />
               <Controller
                 control={control}
                 name="doc"
@@ -48,19 +52,25 @@ function FormSection({ docs, submitForm }) {
                   maxLength: 8,
                   pattern: /^[0-9]/i
                 }}
-                render={({ field }) => (
-                  <input type="text" className="input-data" placeholder="Nro. de doc" {...field} />
+                render={({ field: { onChange } }) => (
+                  <input
+                    type="text"
+                    className="input-data"
+                    placeholder="Nro. de doc"
+                    onChange={(e) => {
+                      onChange(e);
+                    }} />
                 )}
               />
             </Input.Group>
             <div className="error-message-box">
-              {errors && errors.inputDni && (
+              {errors && errors.doc && (
                 <span className="error-message">
-                  {errors.inputDni?.type === 'required' &&
+                  {errors.doc?.type === 'required' &&
                     `Por favor, ingresa tu ${watch('docType')}`}
-                  {errors.inputDni?.type === 'minLength' && 'Se admite 8 números'}
-                  {errors.inputDni?.type === 'maxLength' && 'Se admite 8 números como máximo'}
-                  {errors.inputDni?.type === 'pattern' && 'Caracteres no permitidos'}
+                  {errors.doc?.type === 'minLength' && 'Se admite 8 números'}
+                  {errors.doc?.type === 'maxLength' && 'Se admite 8 números como máximo'}
+                  {errors.doc?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
@@ -87,12 +97,12 @@ function FormSection({ docs, submitForm }) {
               )}
             />
             <div className="error-message-box">
-              {errors.inputPhone && (
+              {errors.phone && (
                 <span className="error-message">
-                  {errors.inputPhone?.type === 'required' && 'Por favor, ingresa tu celular'}
-                  {errors.inputPhone?.type === 'minLength' && 'Se admite 9 números'}
-                  {errors.inputPhone?.type === 'maxLength' && 'Se admite 9 números como máximo'}
-                  {errors.inputPhone?.type === 'pattern' && 'Caracteres no permitidos'}
+                  {errors.phone?.type === 'required' && 'Por favor, ingresa tu celular'}
+                  {errors.phone?.type === 'minLength' && 'Se admite 9 números'}
+                  {errors.phone?.type === 'maxLength' && 'Se admite 9 números como máximo'}
+                  {errors.phone?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
@@ -107,57 +117,50 @@ function FormSection({ docs, submitForm }) {
                 maxLength: 6,
                 pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
               }}
-              render={({ field }) => (
-                <input type="text" className="input-data" placeholder="Placa" {...field} />
+              render={({ field: { onChange } }) => (
+                <input
+                  type="text"
+                  className="input-data"
+                  placeholder="Placa"
+                  onChange={(e) => {
+                    onChange(e);
+                  }} />
               )}
             />
             <div className="error-message-box">
-              {errors.inputNumPlate && (
+              {errors.numPlate && (
                 <span className="error-message">
-                  {errors.inputNumPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
-                  {errors.inputNumPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
-                  {errors.inputNumPlate?.type === 'maxLength' &&
+                  {errors.numPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
+                  {errors.numPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
+                  {errors.numPlate?.type === 'maxLength' &&
                     'Se admite 6 caracteres como maximo'}
-                  {errors.inputNumPlate?.type === 'pattern' && 'Caracteres no permitidos'}
+                  {errors.numPlate?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
             </div>
           </div>
           <div className="checkbox-box">
             <div>
-              {/* <Controller
-                control={control}
-                name="terms"
-                rules={{
-                  required: 'Por favor, acepta los terminos y condiciones'
-                }}
-                render={({ restPropsFields }) => (
-                  <Checkbox {...restPropsFields}>
-                    Acepto la
-                    <a href="https://www.google.com/" target="_blank" rel="noreferrer">
-                      Política de Protección de Datos Personales
-                    </a>
-                    y los
-                    <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">
-                      Términos y Condiciones
-                    </a>
-                  </Checkbox>
-                )}
-              /> */}
               <Controller
                 control={control}
                 name="terms"
+                rules={{
+                  required: 'Por favor, acepta los terminos y condiciones',
+                }}
                 render={({ field: { value, onChange } }) => (
                   <Checkbox
                     checked={value}
+                    className="checkbox-green"
                     onChange={(e) => {
                       onChange(e.target.checked);
                     }}>
                     Acepto la
+                    {' '}
                     <a href="https://www.google.com/" target="_blank" rel="noreferrer">
                       Política de Protección de Datos Personales
                     </a>
                     y los
+                    {' '}
                     <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">
                       Términos y Condiciones
                     </a>
@@ -165,8 +168,8 @@ function FormSection({ docs, submitForm }) {
                 )}
               />
               <div className="error-message-box">
-                {errors.inputTerms && (
-                  <span className="error-message">{errors.inputTerms.message}</span>
+                {errors.terms && (
+                  <span className="error-message">{errors.terms.message}</span>
                 )}
               </div>
             </div>

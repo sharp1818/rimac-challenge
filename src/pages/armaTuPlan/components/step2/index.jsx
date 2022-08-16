@@ -1,6 +1,7 @@
 import AmountSection from '../../../../components/AmountSection';
 import InsuranceSection from '../../../../components/InsuranceSection';
 import TabSection from '../../../../components/TabSection';
+import './styles.scss';
 
 function Step2() {
   return (

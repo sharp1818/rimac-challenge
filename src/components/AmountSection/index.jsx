@@ -1,30 +1,30 @@
-import React, { useContext } from 'react';
-import FormContext from '../../context/Form/FormContext';
+import { CheckOutlined } from '@ant-design/icons';
 import './AmountSection.scss';
 
 function AmountSection() {
-  const {
-    next, nextStep,
-  } = useContext(FormContext);
-
-  const nextPage = () => {
-    next();
-    nextStep();
-  };
-
   return (
-    <div>
-      <div>
+    <div className="amount-section">
+      <div className="amount-info">
         <div>MONTO</div>
         <div>$35.00</div>
-        <div>mensuales</div>
+        <div>MENSUAL</div>
       </div>
-      <div>
-        <div>check1</div>
-        <div>check2</div>
-        <div>check3</div>
+      <div className="car-services">
+        <div>
+          <CheckOutlined />
+          {' '}
+          <span>LLanta de repuesto</span>
+        </div>
+        <div>
+          <CheckOutlined />
+          <span>Análisis de motor</span>
+        </div>
+        <div>
+          <CheckOutlined />
+          <span>Aros gratis</span>
+        </div>
       </div>
-      <button type="button" className="red-button" onClick={() => { nextPage(); }}>LO QUIERO</button>
+      <button type="button" className="red-button">LO QUIERO</button>
     </div>
   );
 }

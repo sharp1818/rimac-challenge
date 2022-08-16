@@ -1,0 +1,44 @@
+.amount-section {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.6fr 1fr;
+    height: 80px;
+  .amount-info {
+    > div:nth-child(1) {
+      display: none;
+      @media only screen and (min-width: 361px) {
+        display: block;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: #494f66;
+      }
+    }
+    > div:nth-child(2) {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -0.2px;
+      color: #494f66;
+    }
+    > div:nth-child(3) {
+      @media only screen and (min-width: 361px) {
+        text-transform: lowercase;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #676f8f;
+      }
+    }
+  }
+  .car-services {
+    display: none;
+    @media only screen and (min-width: 361px) {
+      display: block;
+    }
+  }
+  .red-button {
+  }
+}

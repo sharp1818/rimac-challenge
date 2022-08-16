@@ -1,0 +1,25 @@
+.counter-container{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 24px 1fr 24px;
+    height: 56px;
+    border: 1px solid #C5CBE0;
+    border-radius: 4px;
+    >button{
+        outline: none;
+        border: none;
+        background-color: transparent;
+        color: #6F7DFF;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    >div .display-counter{
+        outline: none;
+        border: none;
+        text-align: center;
+        color: #494F66;
+        max-width: 54px;
+        font-size: 16px;
+    }
+}

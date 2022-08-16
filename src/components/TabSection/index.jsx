@@ -11,14 +11,41 @@ function TabSection() {
 
   return (
     <div>
-      <Tabs defaultActiveKey="1" onChange={onChange}>
-        <TabPane tab="Tab 1" key="1">
+      <Tabs className="tab-section" defaultActiveKey="1" onChange={onChange}>
+        <TabPane
+          tab={(
+            <div className="custom-label-tab">
+              <div>Protege a</div>
+              <div />
+              tu auto
+            </div>
+          )}
+          key="1"
+        >
           <CollapseDisplay />
         </TabPane>
-        <TabPane tab="Tab 2" key="2">
+        <TabPane
+          tab={(
+            <div className="custom-label-tab">
+              <div>Protege a los</div>
+              <div />
+              que te rodean
+            </div>
+          )}
+          key="2"
+        >
           Content of Tab Pane 2
         </TabPane>
-        <TabPane tab="Tab 3" key="3">
+        <TabPane
+          tab={(
+            <div className="custom-label-tab">
+              <div>Mejora tu</div>
+              <div />
+              plan
+            </div>
+          )}
+          key="3"
+        >
           Content of Tab Pane 3
         </TabPane>
       </Tabs>

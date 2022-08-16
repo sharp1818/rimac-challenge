@@ -1,44 +1,41 @@
-import { useContext } from 'react';
-import FormContext from '../../context/Form/FormContext';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import useScreenSize from '../../hooks/useScreenSize';
+import Counter from '../Counter';
+
 import './InsuranceSection.scss';
 
 function InsuranceSection() {
-  const {
-    prev, prevStep,
-  } = useContext(FormContext);
-
-  const backPage = () => {
-    prev();
-    prevStep();
-  };
-
+  const { width } = useScreenSize();
   return (
-    <div>
-      <button type="button" onClick={() => { backPage(); }}>
-        back
-      </button>
-      <div>
-        <div>
+    <div className="insurance-container">
+      <div className="status-box">
+        <ArrowLeftOutlined />
+        <div>{ width <= 360 ? 'PASO 2 DE 2' : 'VOLVER' }</div>
+        <div className="purple-line" />
+      </div>
+      <div className="info-box">
+        <div className="greeting-message">
           ¡Hola,
           {' '}
-          <span>Juan!</span>
+          <span>Adrian!</span>
         </div>
-        <div>Conoce las coberturas para tu plan</div>
+        <div className="info-message">Conoce las coberturas para tu plan</div>
+        <div className="car-info-box">
+          <div>Placa: AMQ-666</div>
+          <div>Wokswagen 2019</div>
+          <div>Golf</div>
+        </div>
       </div>
-      <div>
-        <div>Placa: AMQ-666</div>
-        <div>Wokswagen 2019</div>
-        <div>Golf</div>
-      </div>
-      <div>
-        <div>
+      <div className="input-number-box">
+        <div className="intput-number-rules">
           <div>Indica la suma asegurada</div>
           <div>
             <div>MIN $12,500</div>
+            {' | '}
             <div>MAX $16,500</div>
           </div>
         </div>
-        <div>CONTADOR</div>
+        <div className="input-number-display"><Counter /></div>
       </div>
     </div>
   );

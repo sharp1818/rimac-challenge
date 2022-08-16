@@ -9,7 +9,6 @@ import './styles.scss';
 
 function Step1() {
   const navigate = useNavigate();
-  const docs = ['input1', 'input2'];
 
   const submitForm = (data) => {
     try {
@@ -29,7 +28,7 @@ function Step1() {
       <div className="background-tracking-section">
         <TrackingSection />
       </div>
-      <FormSection {...{ docs, submitForm }} />
+      <FormSection {...{ submitForm }} />
     </div>
   );
 }
