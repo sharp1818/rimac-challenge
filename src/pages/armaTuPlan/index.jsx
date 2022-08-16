@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 function ArmaTuPlan() {
   const methods = useForm({
     defaultValues: {
-      amount: 1600,
+      amount: 15900,
       options: [
         { visibility: true, value: false },
         { visibility: true, value: false },
@@ -14,6 +14,8 @@ function ArmaTuPlan() {
       ]
     }
   });
+  const { watch } = methods;
+  console.log('watch', watch());
   return (
     <FormProvider {...methods}>
       <Outlet />

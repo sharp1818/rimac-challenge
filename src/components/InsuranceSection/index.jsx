@@ -1,4 +1,5 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import useScreenSize from '../../hooks/useScreenSize';
 import Counter from '../Counter';
 
@@ -6,10 +7,11 @@ import './InsuranceSection.scss';
 
 function InsuranceSection() {
   const { width } = useScreenSize();
+  const navigate = useNavigate();
   return (
     <div className="insurance-container">
       <div className="status-box">
-        <ArrowLeftOutlined />
+        <ArrowLeftOutlined onClick={() => navigate('/arma-tu-plan/step_1')} />
         <div>{width <= 360 ? 'PASO 2 DE 2' : 'VOLVER'}</div>
         <div className="purple-line" />
       </div>

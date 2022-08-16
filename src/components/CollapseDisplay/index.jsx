@@ -89,6 +89,7 @@ function CollapseDisplay() {
                 title="Llanta robada"
                 icon="ICON_TIRE_THEFT"
                 onSwitch={() => onSwitch(0)}
+                boolean={watch('options')[0].value}
               />
             }
             key="0">
@@ -102,6 +103,7 @@ function CollapseDisplay() {
                 title="Choque y/o pasarte la luz roja"
                 icon="ICON_CAR_CRASH"
                 onSwitch={() => onSwitch(1)}
+                boolean={watch('options')[1].value}
               />
             }
             key="1">
@@ -115,6 +117,7 @@ function CollapseDisplay() {
                 title="Atropello en la via Evitamiento"
                 icon="ICON_RUN_OVER"
                 onSwitch={() => onSwitch(2)}
+                boolean={watch('options')[2].value}
               />
             }
             key="2">

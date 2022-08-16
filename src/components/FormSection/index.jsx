@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent-props */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-closing-bracket-location */
@@ -49,15 +50,8 @@ function FormSection({ submitForm }) {
                   maxLength: 8,
                   pattern: /^[0-9]/i
                 }}
-                render={({ field: { onChange } }) => (
-                  <input
-                    type="text"
-                    className="input-data"
-                    placeholder="Nro. de doc"
-                    onChange={(e) => {
-                      onChange(e);
-                    }}
-                  />
+                render={({ field }) => (
+                  <input type="text" className="input-data" placeholder="Nro. de doc" {...field} />
                 )}
               />
             </Input.Group>
@@ -82,15 +76,8 @@ function FormSection({ submitForm }) {
                 maxLength: 9,
                 pattern: /^[0-9]/i
               }}
-              render={({ field: { onChange } }) => (
-                <input
-                  type="text"
-                  className="input-data"
-                  placeholder="Celular"
-                  onChange={(e) => {
-                    onChange(e);
-                  }}
-                />
+              render={({ field }) => (
+                <input type="text" className="input-data" placeholder="Celular" {...field} />
               )}
             />
             <div className="error-message-box">
@@ -114,15 +101,8 @@ function FormSection({ submitForm }) {
                 maxLength: 6,
                 pattern: /^[0-9 A-Za-z ÁÉÍÓÚáéíóúñÑ]/i
               }}
-              render={({ field: { onChange } }) => (
-                <input
-                  type="text"
-                  className="input-data"
-                  placeholder="Placa"
-                  onChange={(e) => {
-                    onChange(e);
-                  }}
-                />
+              render={({ field }) => (
+                <input type="text" className="input-data" placeholder="Placa" {...field} />
               )}
             />
             <div className="error-message-box">

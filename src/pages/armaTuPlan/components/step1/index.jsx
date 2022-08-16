@@ -12,8 +12,8 @@ function Step1() {
 
   const submitForm = (data) => {
     try {
-      const { inputDni, inputNumPlate, inputPhone } = data;
-      submit({ inputDni, inputNumPlate, inputPhone }).then((res) => {
+      const { doc, numPlate, phone } = data;
+      submit({ doc, numPlate, phone }).then((res) => {
         if (res.status >= 200 && res.status < 400) {
           navigate('/arma-tu-plan/step_2');
         }
@@ -28,7 +28,7 @@ function Step1() {
       <div className="background-tracking-section">
         <TrackingSection />
       </div>
-      <FormSection {...{ submitForm }} />
+      <FormSection submitForm={submitForm} />
     </div>
   );
 }
