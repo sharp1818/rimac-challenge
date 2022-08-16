@@ -1,25 +1,45 @@
-.counter-container{
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: 24px 1fr 24px;
-    height: 56px;
-    border: 1px solid #C5CBE0;
-    border-radius: 4px;
-    >button{
-        outline: none;
-        border: none;
-        background-color: transparent;
-        color: #6F7DFF;
-        font-weight: bold;
-        font-size: 20px;
+.counter-container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 24px 1fr 24px;
+  height: 56px;
+  border: 1px solid #c5cbe0;
+  border-radius: 4px;
+
+  > button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #6f7dff;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  > div .display-counter {
+    outline: none;
+    border: none;
+    text-align: center;
+    color: #494f66;
+    max-width: 54px;
+    font-size: 16px;
+  }
+  > div .ant-input-affix-wrapper {
+    outline: none;
+    border: none;
+    text-align: center;
+    color: #494f66;
+    max-width: 100px;
+    margin-left: 28px;
+    font-size: 16px;
+    &:focus {
+      border: none;
+      border-color: transparent !important;
+      box-shadow: none;
     }
-    >div .display-counter{
-        outline: none;
-        border: none;
-        text-align: center;
-        color: #494F66;
-        max-width: 54px;
-        font-size: 16px;
+    > input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
+  }
 }

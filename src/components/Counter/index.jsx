@@ -1,24 +1,43 @@
-import { useState } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-closing-bracket-location */
+import Input from 'antd/lib/input/Input';
+import { Controller, useFormContext } from 'react-hook-form';
 import './Counter.scss';
 
 function Counter() {
-  const [insurance, setInsurance] = useState(16000);
+  const { control, watch, setValue } = useFormContext();
   const increase = () => {
-    setInsurance(insurance + 100);
+    setValue('amount', watch('amount') + 100);
   };
   const decrease = () => {
-    setInsurance(insurance - 100);
+    setValue('amount', watch('amount') !== 0 ? watch('amount') - 100 : 0);
   };
 
   return (
     <div className="counter-container">
-      <button type="button" onClick={() => { decrease(); }}>-</button>
+      <button
+        type="button"
+        onClick={() => {
+          decrease();
+        }}>
+        -
+      </button>
       <div>
-        $
-        {' '}
-        <input type="number" min={12500} max={16500} readOnly value={insurance} className="display-counter" />
+        <Controller
+          control={control}
+          name="amount"
+          render={({ field }) => (
+            <Input prefix="$ " readOnly bordered={false} type="number" {...field} />
+          )}
+        />
       </div>
-      <button type="button" onClick={() => { increase(); }}>+</button>
+      <button
+        type="button"
+        onClick={() => {
+          increase();
+        }}>
+        +
+      </button>
     </div>
   );
 }

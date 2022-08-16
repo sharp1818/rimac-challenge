@@ -10,13 +10,12 @@ function InsuranceSection() {
     <div className="insurance-container">
       <div className="status-box">
         <ArrowLeftOutlined />
-        <div>{ width <= 360 ? 'PASO 2 DE 2' : 'VOLVER' }</div>
+        <div>{width <= 360 ? 'PASO 2 DE 2' : 'VOLVER'}</div>
         <div className="purple-line" />
       </div>
       <div className="info-box">
         <div className="greeting-message">
           ¡Hola,
-          {' '}
           <span>Adrian!</span>
         </div>
         <div className="info-message">Conoce las coberturas para tu plan</div>
@@ -35,7 +34,9 @@ function InsuranceSection() {
             <div>MAX $16,500</div>
           </div>
         </div>
-        <div className="input-number-display"><Counter /></div>
+        <div className="input-number-display">
+          <Counter />
+        </div>
       </div>
     </div>
   );

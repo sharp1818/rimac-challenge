@@ -18,7 +18,6 @@ function FormSection({ submitForm }) {
     formState: { errors }
   } = useFormContext();
 
-  console.log('asdasd', watch());
   return (
     <div className="form-section">
       <form onSubmit={handleSubmit(submitForm)}>
@@ -30,19 +29,17 @@ function FormSection({ submitForm }) {
                 name="docType"
                 control={control}
                 rules={{
-                  required: true,
+                  required: true
                 }}
                 defaultValue={{ value: 'dni', label: 'DNI' }}
                 render={({ field }) => (
                   <ReactSelect
                     className="select-input"
                     {...field}
-                    options={[
-                      { value: 'dni', label: 'DNI' },
-                    ]}
-              />
+                    options={[{ value: 'dni', label: 'DNI' }]}
+                  />
                 )}
-          />
+              />
               <Controller
                 control={control}
                 name="doc"
@@ -59,15 +56,15 @@ function FormSection({ submitForm }) {
                     placeholder="Nro. de doc"
                     onChange={(e) => {
                       onChange(e);
-                    }} />
+                    }}
+                  />
                 )}
               />
             </Input.Group>
             <div className="error-message-box">
               {errors && errors.doc && (
                 <span className="error-message">
-                  {errors.doc?.type === 'required' &&
-                    `Por favor, ingresa tu ${watch('docType')}`}
+                  {errors.doc?.type === 'required' && `Por favor, ingresa tu ${watch('docType')}`}
                   {errors.doc?.type === 'minLength' && 'Se admite 8 números'}
                   {errors.doc?.type === 'maxLength' && 'Se admite 8 números como máximo'}
                   {errors.doc?.type === 'pattern' && 'Caracteres no permitidos'}
@@ -124,7 +121,8 @@ function FormSection({ submitForm }) {
                   placeholder="Placa"
                   onChange={(e) => {
                     onChange(e);
-                  }} />
+                  }}
+                />
               )}
             />
             <div className="error-message-box">
@@ -132,8 +130,7 @@ function FormSection({ submitForm }) {
                 <span className="error-message">
                   {errors.numPlate?.type === 'required' && 'Por favor, ingresa tu placa'}
                   {errors.numPlate?.type === 'minLength' && 'Se admite 6 caracteres'}
-                  {errors.numPlate?.type === 'maxLength' &&
-                    'Se admite 6 caracteres como maximo'}
+                  {errors.numPlate?.type === 'maxLength' && 'Se admite 6 caracteres como maximo'}
                   {errors.numPlate?.type === 'pattern' && 'Caracteres no permitidos'}
                 </span>
               )}
@@ -145,7 +142,7 @@ function FormSection({ submitForm }) {
                 control={control}
                 name="terms"
                 rules={{
-                  required: 'Por favor, acepta los terminos y condiciones',
+                  required: 'Por favor, acepta los terminos y condiciones'
                 }}
                 render={({ field: { value, onChange } }) => (
                   <Checkbox
@@ -155,12 +152,10 @@ function FormSection({ submitForm }) {
                       onChange(e.target.checked);
                     }}>
                     Acepto la
-                    {' '}
                     <a href="https://www.google.com/" target="_blank" rel="noreferrer">
                       Política de Protección de Datos Personales
                     </a>
                     y los
-                    {' '}
                     <a href="https://www.gmail.com/" target="_blank" rel="noreferrer">
                       Términos y Condiciones
                     </a>
@@ -168,9 +163,7 @@ function FormSection({ submitForm }) {
                 )}
               />
               <div className="error-message-box">
-                {errors.terms && (
-                  <span className="error-message">{errors.terms.message}</span>
-                )}
+                {errors.terms && <span className="error-message">{errors.terms.message}</span>}
               </div>
             </div>
           </div>
