@@ -1,0 +1,31 @@
+.display-step-container{
+    >div:first-child {
+        border: 1px solid #C5CBE0;
+        color: #C5CBE0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    >div:last-child {
+        border: 1px solid #6F7DFF;
+        color: #fff;
+        background-color: #6F7DFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    hr {
+        background-color: #C5CBE0;
+        color: #C5CBE0;
+        outline: none;
+        border: none;
+        width: 1px;
+        height: 20px;
+    }
+}

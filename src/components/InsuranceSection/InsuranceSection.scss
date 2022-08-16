@@ -1,4 +1,7 @@
 .insurance-container {
+  @media only screen and (min-width: 361px) {
+    padding-top: 30px;
+  }
 }
 
 .insurance-container > .status-box {
@@ -50,7 +53,9 @@
   background-color: #f7f8fc;
   padding: 34px 32px;
   @media only screen and (min-width: 361px) {
-    padding: 32px 0px;
+    padding-bottom: 26px;
+    padding-top: 14px;
+    background-color: #fff;
   }
 }
 
@@ -70,24 +75,38 @@
 
 .insurance-container > .info-box > .car-info-box {
   background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border-radius: 12px;
   margin: 24px 0px;
-  padding: 24px 28px;
+   padding: 0px 28px;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-  > div:nth-child(1) {
+  @media only screen and (min-width: 361px) {
+
+  }
+  >.info-box {
+    padding: 30px 0px;
+  }
+  >.info-box > div:nth-child(1) {
     font-size: 12px;
     line-height: 28px;
     color: #676f8f;
   }
-  > div {
+  >.info-box > div {
     font-size: 16px;
     line-height: 24px;
     display: flex;
     align-items: center;
     letter-spacing: 0.2px;
     color: #494f66;
+  }
+  >.background-icon-boy {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    background-image: url('../../images/CreatePlan/ICON_BOY.png');
   }
 }
 

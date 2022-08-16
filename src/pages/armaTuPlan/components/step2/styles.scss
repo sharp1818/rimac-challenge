@@ -1,3 +1,24 @@
 .create-plan-component-layout{
+    @media only screen and (min-width: 361px) {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        height: 100vh;
+    }
+}
 
+.create-plan-component-layout > .display-step-component {
+    display: none;
+    @media only screen and (min-width: 361px) {
+        display: flex;
+        background-color: #F7F8FC;
+        width: 100%;
+        padding-top: 50px;
+        justify-content: center;
+    }
+}
+
+.create-plan-component-layout > .section-mid {
+    display: grid;
+    justify-items: center;
 }

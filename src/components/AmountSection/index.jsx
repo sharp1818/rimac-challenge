@@ -10,6 +10,7 @@ function AmountSection() {
         <div>MENSUAL</div>
       </div>
       <div className="car-services">
+        <div className="title">El precio incluye:</div>
         <div>
           <CheckOutlined />
           {' '}

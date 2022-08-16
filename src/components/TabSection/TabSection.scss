@@ -21,5 +21,7 @@
         text-transform: uppercase;
         flex-direction: column;
     }
-
+    .ant-tabs-content-holder{
+        max-width: 500px;
+    }
 }
