@@ -21,9 +21,12 @@ function InsuranceSection() {
         </div>
         <div className="info-message">Conoce las coberturas para tu plan</div>
         <div className="car-info-box">
-          <div>Placa: AMQ-666</div>
-          <div>Wokswagen 2019</div>
-          <div>Golf</div>
+          <div className="info-box">
+            <div>Placa: AMQ-666</div>
+            <div>Wokswagen 2019</div>
+            <div>Golf</div>
+          </div>
+          <div className="background-icon-boy" />
         </div>
       </div>
       <div className="input-number-box">

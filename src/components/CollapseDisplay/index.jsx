@@ -17,7 +17,7 @@ function CollapseDisplay() {
   );
   return (
     <div>
-      <Collapse bordered={false} defaultActiveKey={['1']} expandIconPosition="end" className="collapse-group">
+      <Collapse bordered={false} defaultActiveKey={['1']} expandIconPosition="end">
         <Panel header={<PanelHeader title="Llanta robada" icon="ICON_TIRE_THEFT" />} key="1">
           {text}
         </Panel>
